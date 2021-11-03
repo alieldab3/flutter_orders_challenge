@@ -77,9 +77,9 @@ class OrdersProvider with ChangeNotifier {
           await rootBundle.loadString('assets/json/orders.json');
       final List<dynamic> orders = await json.decode(response);
 
-      orders.forEach((order) {
+      for (var order in orders) {
         loadedOrders.add(OrderItem.fromJson(order));
-      });
+      }
 
       _orders = loadedOrders;
       notifyListeners();
@@ -89,12 +89,12 @@ class OrdersProvider with ChangeNotifier {
   }
 
   Map<String, int> ordersPerMonth() {
-    orders.forEach((order) {
+    for (var order in orders) {
       int orderMonth = DateTime.parse(order.registered!).month;
       if (order.status == 'ORDERED') {
         ordersNoPerMonth['$orderMonth'] = ordersNoPerMonth['$orderMonth']! + 1;
       }
-    });
+    }
     // notifyListeners();
     return ordersNoPerMonth;
   }
@@ -110,7 +110,7 @@ class OrdersProvider with ChangeNotifier {
   }
 
   Map<String, num> setOrdersMetrics() {
-    orders.forEach((order) {
+    for (var order in orders) {
       ordersMetrics['totalCount'] = ordersMetrics['totalCount']! + 1;
 
       ordersMetrics['totalPrice'] = ordersMetrics['totalPrice']! +
@@ -119,7 +119,7 @@ class OrdersProvider with ChangeNotifier {
       if (order.status == 'RETURNED') {
         ordersMetrics['returnsNo'] = ordersMetrics['returnsNo']! + 1;
       }
-    });
+    }
 
     ordersMetrics['averagePrice'] =
         ordersMetrics['totalPrice']!.floor() / ordersMetrics['totalCount']!;

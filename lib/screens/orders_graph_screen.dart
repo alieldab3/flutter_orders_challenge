@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 import 'package:provider/provider.dart';
 import 'package:fl_chart/fl_chart.dart';
 
+import '../main.dart';
 import '../providers/orders_provider.dart';
 
 class OrdersGraphScreen extends StatefulWidget {
@@ -15,9 +17,6 @@ class OrdersGraphScreen extends StatefulWidget {
 }
 
 class _OrdersGraphScreenState extends State<OrdersGraphScreen> {
-
-
-
   List<Color> gradientColors = [
     const Color(0xff23b6e6),
     const Color(0xff02d39a),
@@ -44,6 +43,7 @@ class _OrdersGraphScreenState extends State<OrdersGraphScreen> {
       ),
       titlesData: FlTitlesData(
         show: true,
+        leftTitles: SideTitles(showTitles: false),
         rightTitles: SideTitles(showTitles: false),
         topTitles: SideTitles(showTitles: false),
         bottomTitles: SideTitles(
@@ -84,28 +84,6 @@ class _OrdersGraphScreenState extends State<OrdersGraphScreen> {
             return '';
           },
           margin: 8,
-        ),
-        leftTitles: SideTitles(
-          showTitles: false,
-          interval: 1,
-          getTextStyles: (context, value) => const TextStyle(
-            color: Color(0xff67727d),
-            fontWeight: FontWeight.bold,
-            fontSize: 15,
-          ),
-          // getTitles: (value) {
-          //   switch (value.toInt()) {
-          //     case 0:
-          //       return '0';
-          //     case 3:
-          //       return '30k';
-          //     case 5:
-          //       return '50k';
-          //   }
-          //   return '';
-          // },
-          reservedSize: 32,
-          margin: 12,
         ),
       ),
       borderData: FlBorderData(
@@ -155,36 +133,141 @@ class _OrdersGraphScreenState extends State<OrdersGraphScreen> {
     final String maxMonthOrdersKey = ordersProvider.maxMonthOrdersKey;
 
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Orders Graph'),
-        ),
-        body: 
-        
-        Container(
-          margin: const EdgeInsets.only(top: 50),
-          padding: const EdgeInsets.all(8),
-          child: Stack(
-            children: <Widget>[
-              AspectRatio(
-                aspectRatio: 1.50,
-                child: Container(
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(18),
+      appBar: kIsWeb
+          ?
+          //WEB
+          AppBar(
+              foregroundColor: Theme.of(context).accentColor,
+              backgroundColor: Colors.white,
+              toolbarHeight: 60,
+              leading: const SizedBox(
+                width: 0,
+              ),
+              title: Image.asset(
+                'assets/images/Shopping_Live_Logo.png',
+                fit: BoxFit.cover,
+                height: 40,
+              ),
+              actions: [
+                TextButton(
+                  child: const Text('Home'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+                TextButton(
+                  child: const Text('About'),
+                  onPressed: () {},
+                ),
+                TextButton(
+                  child: const Text('Contact'),
+                  onPressed: () {},
+                ),
+                TextButton(
+                  child: const Text('Login'),
+                  onPressed: () {},
+                ),
+                TextButton(
+                  child: const Text('SIGN UP'),
+                  onPressed: () {},
+                ),
+                const SizedBox(
+                  width: 20,
+                ),
+              ],
+            )
+          :
+          //NOT WEB
+          AppBar(
+              title: const Text("Orders Graph"),
+            ),
+      body: kIsWeb
+          ?
+          // WEB
+          SingleChildScrollView(
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.only(top: 50),
+                      padding: const EdgeInsets.all(8),
+                      child: const Text(
+                        'Number of Orders per Month',
+                        style: TextStyle(fontSize: 20),
+                      ),
                     ),
-                    color: Color(0xff232d37),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                        right: 18.0, left: 18.0, top: 24, bottom: 24),
-                    child: LineChart(
-                      mainData(ordersNoPerMonth, maxMonthOrdersKey),
+                    Container(
+                      width: 700,
+                      height: 500,
+                      margin: const EdgeInsets.only(top: 50),
+                      padding: const EdgeInsets.all(8),
+                      child: Stack(
+                        children: <Widget>[
+                          Container(
+                            decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(18),
+                              ),
+                              color: Color(0xff232d37),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                  right: 18.0, left: 18.0, top: 24, bottom: 24),
+                              child: LineChart(
+                                mainData(ordersNoPerMonth, maxMonthOrdersKey),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
+                  ],
                 ),
               ),
-            ],
-          ),
-        ));
+            )
+          :
+          // NOT WEB
+          SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Container(
+                    margin: const EdgeInsets.only(top: 50),
+                    padding: const EdgeInsets.all(8),
+                    child: const Text(
+                      'Number of Orders per Month',
+                      style: TextStyle(fontSize: 20),
+                    ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    child: AspectRatio(
+                      aspectRatio: 1.5,
+                      child: Stack(
+                        children: <Widget>[
+                          Container(
+                            decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(18),
+                              ),
+                              color: Color(0xff232d37),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                  right: 18.0, left: 18.0, top: 24, bottom: 24),
+                              child: LineChart(
+                                mainData(ordersNoPerMonth, maxMonthOrdersKey),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+    );
   }
 }

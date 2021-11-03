@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 class CardItem extends StatelessWidget {
   final double width;
@@ -32,7 +33,7 @@ class CardItem extends StatelessWidget {
               Text(
                 title,
                 style: const TextStyle(
-                  fontSize: 18,
+                  fontSize: kIsWeb ? 36 : 18,
                   color: Colors.black87,
                 ),
               ),
@@ -44,7 +45,7 @@ class CardItem extends StatelessWidget {
                   subTitle,
                   style: const TextStyle(
                     color: Colors.deepPurple,
-                    fontSize: 40,
+                    fontSize: kIsWeb ? 80:40,
                   ),
                 ),
               ),
