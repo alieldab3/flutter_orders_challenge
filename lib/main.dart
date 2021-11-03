@@ -1,7 +1,6 @@
 import 'package:flapkap_flutter_challenge/providers/orders_provider.dart';
 import 'package:flapkap_flutter_challenge/screens/orders_graph_screen.dart';
 import 'package:flapkap_flutter_challenge/screens/orders_metrics_screen.dart';
-import 'package:flapkap_flutter_challenge/widgets/card_item.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -67,37 +66,134 @@ class _MyHomePageState extends State<MyHomePage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Flexible(
-                flex: 1,
-                child: GestureDetector(
-                  child: const CardItem(
-                    width: 200,
-                    height: 300,
-                    title: 'Orders',
-                    subTitle: 'Metrics',
-                    // child: Text('ss'),
+              flex: 1,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.of(context)
+                      .pushNamed(OrdersMetricsScreen.routeName);
+                },
+                child: SizedBox(
+                  width: 200,
+                  height: 250,
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12)),
+                    elevation: 18,
+                    child: Stack(
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.all(16),
+                          decoration: const BoxDecoration(
+                            image: DecorationImage(
+                                alignment: Alignment.topCenter,
+                                image: AssetImage('assets/images/metrics.png'),
+                                fit: BoxFit.fitWidth),
+                          ),
+                        ),
+                        Container(
+                          color: const Color.fromRGBO(255, 255, 255, 0),
+                        ),
+                        Container(
+                            alignment: Alignment.bottomCenter,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: const [
+                                Text(
+                                  'Order',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontFamily: 'bold',
+                                    fontWeight: FontWeight.bold,
+                                    // color: Colors.deepPurple
+                                    color: Color.fromRGBO(0, 0, 0, 1),
+                                  ),
+                                ),
+                                Text(
+                                  'METRICS',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize: 25,
+                                      fontFamily: 'bold',
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.deepPurple
+                                      // color: Color.fromRGBO(0, 0, 0, 1),
+                                      ),
+                                ),
+                              ],
+                            )),
+                      ],
+                    ),
                   ),
-                  onTap: () {
-                    Navigator.of(context)
-                        .pushNamed(OrdersMetricsScreen.routeName);
-                  },
-                )),
+                ),
+              ),
+            ),
             const SizedBox(
               width: 5,
             ),
             Flexible(
-                flex: 1,
-                child: GestureDetector(
-                  child: const CardItem(
-                    width: 200,
-                    height: 300,
-                    title: 'Orders',
-                    subTitle: 'Graph',
+              flex: 1,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.of(context).pushNamed(OrdersGraphScreen.routeName);
+                },
+                child: SizedBox(
+                  width: 200,
+                  height: 250,
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12)),
+                    elevation: 18,
+                    child: Stack(
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.all(16),
+                          decoration: const BoxDecoration(
+                            image: DecorationImage(
+                                alignment: Alignment.topCenter,
+                                image: AssetImage('assets/images/graph.png'),
+                                fit: BoxFit.fitWidth),
+                          ),
+                        ),
+                        Container(
+                          color: const Color.fromRGBO(255, 255, 255, 0),
+                        ),
+                        Container(
+                          alignment: Alignment.bottomCenter,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: const [
+                              Text(
+                                'Order',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontFamily: 'bold',
+                                  fontWeight: FontWeight.bold,
+                                  // color: Colors.deepPurple
+                                  color: Color.fromRGBO(0, 0, 0, 1),
+                                ),
+                              ),
+                              Text(
+                                'GRAPH',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: 25,
+                                    fontFamily: 'bold',
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.deepPurple
+                                    // color: Color.fromRGBO(0, 0, 0, 1),
+                                    ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                  onTap: () {
-                    Navigator.of(context)
-                        .pushNamed(OrdersGraphScreen.routeName);
-                  },
-                )),
+                ),
+              ),
+            ),
           ],
         ),
       ),
