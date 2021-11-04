@@ -95,7 +95,6 @@ class OrdersProvider with ChangeNotifier {
         ordersNoPerMonth['$orderMonth'] = ordersNoPerMonth['$orderMonth']! + 1;
       }
     }
-    // notifyListeners();
     return ordersNoPerMonth;
   }
 

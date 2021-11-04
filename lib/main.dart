@@ -64,7 +64,6 @@ class _MyHomePageState extends State<MyHomePage> {
           ?
           //WEB
           AppBar(
-              foregroundColor: Theme.of(context).accentColor,
               backgroundColor: Colors.white,
               toolbarHeight: 60,
               leading: const SizedBox(
@@ -109,7 +108,6 @@ class _MyHomePageState extends State<MyHomePage> {
       body: SingleChildScrollView(
         child: Container(
           margin: const EdgeInsets.fromLTRB(16, 50, 16, 16),
-          // padding: const EdgeInsets.all(8),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -155,7 +153,6 @@ class _MyHomePageState extends State<MyHomePage> {
                                       fontSize: 20,
                                       fontFamily: 'bold',
                                       fontWeight: FontWeight.bold,
-                                      // color: Colors.deepPurple
                                       color: Color.fromRGBO(0, 0, 0, 1),
                                     ),
                                   ),
@@ -167,7 +164,6 @@ class _MyHomePageState extends State<MyHomePage> {
                                         fontFamily: 'bold',
                                         fontWeight: FontWeight.bold,
                                         color: Colors.deepPurple
-                                        // color: Color.fromRGBO(0, 0, 0, 1),
                                         ),
                                   ),
                                 ],
@@ -221,7 +217,6 @@ class _MyHomePageState extends State<MyHomePage> {
                                     fontSize: 20,
                                     fontFamily: 'bold',
                                     fontWeight: FontWeight.bold,
-                                    // color: Colors.deepPurple
                                     color: Color.fromRGBO(0, 0, 0, 1),
                                   ),
                                 ),
@@ -233,7 +228,6 @@ class _MyHomePageState extends State<MyHomePage> {
                                       fontFamily: 'bold',
                                       fontWeight: FontWeight.bold,
                                       color: Colors.deepPurple
-                                      // color: Color.fromRGBO(0, 0, 0, 1),
                                       ),
                                 ),
                               ],

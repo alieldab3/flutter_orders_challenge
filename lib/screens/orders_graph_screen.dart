@@ -4,7 +4,6 @@ import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:provider/provider.dart';
 import 'package:fl_chart/fl_chart.dart';
 
-import '../main.dart';
 import '../providers/orders_provider.dart';
 
 class OrdersGraphScreen extends StatefulWidget {
@@ -137,7 +136,6 @@ class _OrdersGraphScreenState extends State<OrdersGraphScreen> {
           ?
           //WEB
           AppBar(
-              foregroundColor: Theme.of(context).accentColor,
               backgroundColor: Colors.white,
               toolbarHeight: 60,
               leading: const SizedBox(

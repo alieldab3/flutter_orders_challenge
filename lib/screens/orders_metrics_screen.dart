@@ -3,7 +3,6 @@ import 'package:flutter/foundation.dart' show kIsWeb;
 
 import 'package:provider/provider.dart';
 
-import '../main.dart';
 import '../providers/orders_provider.dart';
 import '../widgets/card_item.dart';
 
@@ -27,7 +26,6 @@ class _OrdersMetricsScreenState extends State<OrdersMetricsScreen> {
           ?
           //WEB
           AppBar(
-              foregroundColor: Theme.of(context).accentColor,
               backgroundColor: Colors.white,
               toolbarHeight: 60,
               leading: const SizedBox(
@@ -74,7 +72,6 @@ class _OrdersMetricsScreenState extends State<OrdersMetricsScreen> {
       body: SingleChildScrollView(
         child: Container(
           margin: const EdgeInsets.fromLTRB(16, 50, 16, 16),
-          // padding: const EdgeInsets.all(8),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -94,7 +91,6 @@ class _OrdersMetricsScreenState extends State<OrdersMetricsScreen> {
               Flexible(
                 flex: 1,
                 child: Column(
-                  // mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     CardItem(
                       width: kIsWeb ? 400 : 200,
