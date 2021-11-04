@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
           ),
         ],
         child: MaterialApp(
+            debugShowCheckedModeBanner: false,
             title: 'FlapKap Challenge',
             theme: ThemeData(
               primarySwatch: Colors.deepPurple,
@@ -163,8 +164,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         fontSize: 25,
                                         fontFamily: 'bold',
                                         fontWeight: FontWeight.bold,
-                                        color: Colors.deepPurple
-                                        ),
+                                        color: Colors.deepPurple),
                                   ),
                                 ],
                               )),
@@ -227,8 +227,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       fontSize: 25,
                                       fontFamily: 'bold',
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.deepPurple
-                                      ),
+                                      color: Colors.deepPurple),
                                 ),
                               ],
                             ),
