@@ -10,3 +10,7 @@ https://drive.google.com/file/d/1bhXSOll3G4IFyLs-_kyREh2KLIxapPMz/view?usp=shari
 The app contains 2 screens as follows:
 - First one showing numeric metrics about the orders: total count, average price of all orders and number of orders returns.
 - Second one showing a graph that represents the number of successful orders per each month.
+
+
+A mini video showing the app running on Android and Web can be found here:
+https://drive.google.com/file/d/1YJn-6Ghj3Q5avXzaPEt-W6JOU6IrlwV4/view?usp=sharing
